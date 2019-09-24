@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.MainActivity">
+
+<data>
+    <variable
+        name="viewmodel"
+        type="com.example.week7_day1.viewmodel.MainActivityViewModel" />
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username:"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/etUserName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/etUserName"
+        app:layout_constraintTop_toTopOf="@id/etUserName" />
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:afterTextChanged="@{(editable) -> viewmodel.userName(editable)}"
+        app:layout_constraintBottom_toTopOf="@id/etPassword"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tvUserName" />
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password: "
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/etPassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/etPassword"
+        app:layout_constraintTop_toTopOf="@id/etPassword" />
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:afterTextChanged="@{(editable) -> viewmodel.password(editable)}"
+        app:layout_constraintBottom_toTopOf="@id/btnLogin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tvPassword" />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Login"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="#3B79DD"
+        android:layout_margin="5dp"
+        android:onClick="@{(v) -> viewmodel.onLogInClicked(v)}"
+        app:layout_constraintBottom_toTopOf="@id/login_button"
+        app:layout_constraintRight_toLeftOf="@id/btnSignup"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:fontFamily="sans-serif-black"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="#3B79DD"
+        android:layout_margin="5dp"
+        android:onClick="@{(v) -> viewmodel.onLogInClicked(v)}"
+        app:layout_constraintBottom_toTopOf="@id/login_button"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btnLogin" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_margin="100px"
+        android:onClick="@{(v) -> viewmodel.onLogInClicked(v)}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </layout>
